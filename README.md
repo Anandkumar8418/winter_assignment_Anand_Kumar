@@ -42,7 +42,7 @@ Assigns 80% of transactions to a single customer ID.
 Generates 50–150 transactions with amounts normally distributed (mean: 1200, std dev: 300).
 
 Image of the generated data:
-![Could Not Load Image](image.png)
+![Could Not Load Image](media/image.png)
 
 Feature Engineering:
 
