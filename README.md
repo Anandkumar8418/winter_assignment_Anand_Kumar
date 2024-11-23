@@ -16,12 +16,16 @@ This project provides tools for generating synthetic merchant profiles and trans
 
 ## **Key Characteristics of the Generated Data**
 
+<<<<<<< HEAD
 ### **Merchant Profiles**
 - **Unique merchant IDs**: Each merchant is assigned a unique identifier.
 - **Business Types**: Merchants belong to different business categories (e.g., Retail, E-commerce).
 - **Registration Dates**: Randomly assigned registration dates within a given range.
 - **GST Statuses**: Merchants have different GST statuses (Active, Inactive, Pending).
 - **Fraudulent Flag**: 20% of the merchants are marked as fraudulent.
+=======
+### Normal Transactions:
+>>>>>>> ffe9c8274fa80dc8ff17a675777bb1a6619cce3a
 
 ---
 
@@ -121,4 +125,26 @@ Implements detection rules for identifying specific fraud patterns:
 ### **License**
 This project is licensed under the MIT License.
 
+<<<<<<< HEAD
 Feel free to contribute and enhance the framework with additional features and capabilities!
+=======
+
+## Model Development:
+
+####    FraudDetectionAutoencoder: Implements an autoencoder with:
+
+3-layer encoder and decoder architecture
+MSE-based reconstruction error
+Automatic threshold calculation
+
+
+
+
+##  Fraud Pattern Detection:
+
+####    FraudPatternDetector: Implements specific detection rules for:
+
+High velocity spikes
+Odd-hour patterns
+Customer concentration
+>>>>>>> ffe9c8274fa80dc8ff17a675777bb1a6619cce3a
