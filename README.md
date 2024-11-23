@@ -108,25 +108,39 @@ This autoencoder model is designed for detecting fraudulent patterns by learning
 
 ## **Model Architecture**
 
-- **Input Layer**: Takes the normalized feature vector as input.
-- **Encoder**: 
-  - **Dense Layer 1**: 32 neurons, ReLU activation.
-  - **Dense Layer 2**: 16 neurons, ReLU activation.
-  - **Dense Layer 3**: 8 neurons, ReLU activation.
-- **Decoder**: 
-  - **Dense Layer 1**: 16 neurons, ReLU activation.
-  - **Dense Layer 2**: 32 neurons, ReLU activation.
-  - **Output Layer**: Same size as input, Sigmoid activation for reconstruction.
+### **Overview**
+This script defines and trains a **complex autoencoder model** for anomaly detection, using advanced techniques such as self-attention, regularization, and learning rate scheduling to improve model performance and generalization.
 
----
+### **Key Components**
 
-## **Training**
+1. **Model Architecture**:
+   - **Encoder**: Three fully connected layers with different activation functions (ReLU, ELU, SELU) and regularization techniques (L2 regularization, Batch Normalization, and Dropout).
+   - **Attention Mechanism**: A self-attention layer to focus on important features in the encoded representation.
+   - **Bottleneck Layer**: A dense layer with SELU activation, followed by Batch Normalization.
+   - **Decoder**: Three fully connected layers to reconstruct the input, with similar techniques applied as in the encoder.
+   - **Output Layer**: A sigmoid activation function for reconstructing the input data.
 
-- **Optimizer**: Adam
-- **Loss Function**: Mean Squared Error (MSE)
-- **Epochs**: 200
-- **Batch Size**: 32
-- **Validation Split**: 10%
+2. **Custom Loss Function**:
+   - Combines **MSE (Mean Squared Error)** with **L1 Regularization** to penalize large weights and encourage sparsity.
+
+3. **Optimizers and Learning Rate**:
+   - The model uses **Adam** with an **Exponential Decay** learning rate schedule to dynamically adjust the learning rate during training.
+
+4. **Callbacks**:
+   - **EarlyStopping**: Stops training when the validation loss stops improving.
+   - **ReduceLROnPlateau**: Reduces the learning rate when the validation loss plateaus.
+
+### **Training**:
+- The model is trained on `normalized_features`, with a batch size of 32 and up to 200 epochs, using callbacks to enhance performance.
+
+### **Use Cases**:
+This model is designed for **anomaly detection**, where the goal is to identify unusual patterns in input data by comparing the reconstruction error with a threshold.
+
+### **Key Features**:
+- Advanced architecture with attention mechanisms for better feature extraction.
+- Regularization to prevent overfitting.
+- Custom loss function combining MSE and L1 regularization.
+- Dynamic learning rate adjustment during training.
 
 
 ---
