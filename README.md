@@ -16,7 +16,7 @@ Different GST statuses
 20% are marked as fraudulent
 
 
-###Normal Transactions:
+### Normal Transactions:
 
 50-200 transactions per merchant
 Random dates within specified period
