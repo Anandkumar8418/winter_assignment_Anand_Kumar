@@ -106,41 +106,30 @@ This autoencoder model is designed for detecting fraudulent patterns by learning
 
 ---
 
-## **Model Architecture**
+## Model Architecture
 
-### **Overview**
-This script defines and trains a **complex autoencoder model** for anomaly detection, using advanced techniques such as self-attention, regularization, and learning rate scheduling to improve model performance and generalization.
+The autoencoder consists of two main components: an **Encoder** and a **Decoder**.
 
-### **Key Components**
+### **1. Encoder**
+The encoder compresses the input data into a smaller latent representation, extracting essential features.
 
-1. **Model Architecture**:
-   - **Encoder**: Three fully connected layers with different activation functions (ReLU, ELU, SELU) and regularization techniques (L2 regularization, Batch Normalization, and Dropout).
-   - **Attention Mechanism**: A self-attention layer to focus on important features in the encoded representation.
-   - **Bottleneck Layer**: A dense layer with SELU activation, followed by Batch Normalization.
-   - **Decoder**: Three fully connected layers to reconstruct the input, with similar techniques applied as in the encoder.
-   - **Output Layer**: A sigmoid activation function for reconstructing the input data.
+- **Input Layer**: Accepts input features of size `input_dim` (the number of features in the dataset).
+- **Hidden Layers**:
+  - A dense layer with 32 neurons and ReLU activation.
+  - A dense layer with 16 neurons and ReLU activation.
+  - A dense layer with 8 neurons and ReLU activation (**bottleneck layer**).
 
-2. **Custom Loss Function**:
-   - Combines **MSE (Mean Squared Error)** with **L1 Regularization** to penalize large weights and encourage sparsity.
+### **2. Decoder**
+The decoder reconstructs the original data from the latent representation.
 
-3. **Optimizers and Learning Rate**:
-   - The model uses **Adam** with an **Exponential Decay** learning rate schedule to dynamically adjust the learning rate during training.
+- **Hidden Layers**:
+  - A dense layer with 16 neurons and ReLU activation.
+  - A dense layer with 32 neurons and ReLU activation.
+- **Output Layer**:
+  - A dense layer with `input_dim` neurons and Sigmoid activation to reconstruct normalized input features.
 
-4. **Callbacks**:
-   - **EarlyStopping**: Stops training when the validation loss stops improving.
-   - **ReduceLROnPlateau**: Reduces the learning rate when the validation loss plateaus.
-
-### **Training**:
-- The model is trained on `normalized_features`, with a batch size of 32 and up to 200 epochs, using callbacks to enhance performance.
-
-### **Use Cases**:
-This model is designed for **anomaly detection**, where the goal is to identify unusual patterns in input data by comparing the reconstruction error with a threshold.
-
-### **Key Features**:
-- Advanced architecture with attention mechanisms for better feature extraction.
-- Regularization to prevent overfitting.
-- Custom loss function combining MSE and L1 regularization.
-- Dynamic learning rate adjustment during training.
+### **Complete Autoencoder Model**
+The encoder and decoder are combined to form the autoencoder, which is trained to minimize the **mean squared error (MSE)** between the input and reconstructed output.
 
 
 ---
